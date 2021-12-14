@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xx.mapper.EmplMapper">
+  <resultMap id="BaseResultMap" type="com.xx.entity.Empl">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="salary" jdbcType="DOUBLE" property="salary" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `name`, birthday, salary, gender
+  </sql>
+
+  <!--根据id查询-->
+  <select id="selectById" parameterType="java.lang.Integer" resultType="com.xx.entity.Empl">
+    select 
+    <include refid="Base_Column_List" />
+    from employee
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <!--员工列表-->
+    <select id="list" resultType="com.xx.entity.Empl">
+      select
+      <include refid="Base_Column_List" />
+      from `employee`
+    </select>
+
+
+  <!--根据id删除员工-->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from employee
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <!--添加员工-->
+  <insert id="add" keyColumn="id" keyProperty="id" parameterType="com.xx.entity.Empl" useGeneratedKeys="true">
+    insert into employee (`name`, birthday, salary, gender)
+    values (#{name,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{salary,jdbcType=DOUBLE}, 
+      #{gender,jdbcType=TINYINT})
+  </insert>
+
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xx.entity.Empl" useGeneratedKeys="true">
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="salary != null">
+        salary,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="salary != null">
+        #{salary,jdbcType=DOUBLE},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+
+  <!--跟新员工信息-->
+  <update id="update" parameterType="com.xx.entity.Empl">
+    update employee
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="salary != null">
+        salary = #{salary,jdbcType=DOUBLE},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xx.entity.Empl">
+    update employee
+    set `name` = #{name,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      salary = #{salary,jdbcType=DOUBLE},
+      gender = #{gender,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
