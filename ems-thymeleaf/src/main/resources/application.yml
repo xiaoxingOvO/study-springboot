@@ -1,0 +1,38 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /ems-thymeleaf
+
+#spring  thymeleaf   datasource
+spring:
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/ems-thymeleaf?characterEncoding=utf8&serverTimezone=GMT
+    username: root
+    password: root
+  web:
+    resources:
+      static-locations: classpath:/static/,file:${photo.file.dir}
+#mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*xml
+  type-aliases-package: com.xx.emsthymeleaf.pojo
+
+
+logging:
+  level:
+    root: info
+    com.xx.smsthymeleaf: debug
+
+#指定文件上传位置
+photo:
+  file:
+    dir: D:\workspace_idea\springboot\ems-thymeleaf\photos
+
+

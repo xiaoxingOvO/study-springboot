@@ -1,0 +1,31 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /sms-thymeleaf
+
+
+#spring\u76F8\u5173\u914D\u7F6E  thymeleaf\u6A21\u677F\u5F15\u64CE   datasource\u6570\u636E\u6E90
+spring:
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/    #\u524D\u7F00
+    suffix: .html     #\u540E\u7F00
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource    #\u6570\u636E\u6E90
+    driver-class-name: com.mysql.cj.jdbc.Driver     #\u9A71\u52A8
+    url: jdbc:mysql://localhost:3306/sms?characterEncoding=utf8&serverTimezone=GMT    #\u8FDE\u63A5:root   #\u8D26\u53F7
+    username: root
+    password: root
+
+#mybatis\u914D\u7F6E
+mybatis:
+  mapper-locations: classpath:mapper/*xml   #mapper.xml\u4F4D\u7F6E
+  type-aliases-package: com.xx.smsthymeleaf.pojo    #\u522B\u540D
+
+#\u65E5\u5FD7\u914D\u7F6E
+logging:
+  level:
+    root: info
+    com.xx.smsthymeleaf: debug

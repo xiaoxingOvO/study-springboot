@@ -1,0 +1,51 @@
+#公共配置
+server:
+  port: 8080    #内嵌服务器端口号
+  servlet:
+    context-path: /springboot_day2 #项目路径,springboot默认访问路径不加项目名,这里配置了,访问路径就要加上
+    jsp:
+      init-parameters:
+        development: true   #开启jsp页面开发模式,修改jsp页面无需重启springboot应用
+
+#声明基本属性注入值
+name: 小星
+age: 23
+price: 23.23
+birthday: 2012/12/12 12:12:12  #注意:默认是日期格式是 yyyy/mm/dd HH:MM:ss
+sex: true
+qqs: 6099,7088,8009   #注入数组时,用逗号隔开
+lists: xiaoming,xiaocheng,xiaoshun,xiaohong   #注入集合时,用逗号隔开
+maps: "{'aa':'小红','bb':'小王'}"   #注入map集合可以使用json形式进行注入 注意:使用@value注入时必须加入"#{${属性}}"进行注入
+
+#声明对象注入
+orders:
+  id: 24
+  name: 小黑
+  price: 23.23
+
+#配置jsp视图前缀和后缀 解析结果:前缀+controller返回值+后缀
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:   #整合mybatis相关配置
+    type: com.alibaba.druid.pool.DruidDataSource  #指定连接池类型
+    driver-class-name: com.mysql.cj.jdbc.Driver   #数据库驱动
+    url: jdbc:mysql://localhost:3306/ems-thymeleaf?characterEncoding=UTF-8&serverTimezone=GMT
+    username: root
+    password: root
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml    #指定mapper配置文件
+  type-aliases-package: com.xx.pojo   #指定实体类的包名
+
+#配置日志
+logging:
+  level:
+    root: info    #调整全局日志为info,默认也是info
+    com.xx.mapper: debug    #指定包的日志级别
+    com.xx.service: debug    #指定包的日志级别
+#  file:   #不配置就输出到 控制台,配置了会生成文件
+#    name: run.log   #指定生成日志文件名称
+#    path: ./    #将日志文件生成当前目录(当前目录的目录中)

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xx.emsthymeleaf.mapper.EmplMapper">
+
+    <insert id="save" parameterType="com.xx.emsthymeleaf.pojo.Employee" useGeneratedKeys="true" keyProperty="id">
+        insert into employee
+        values (#{id}, #{name}, #{salary}, #{birthday}, #{photo})
+    </insert>
+
+    <!--员工更新-->
+    <update id="update" parameterType="com.xx.emsthymeleaf.pojo.Employee">
+        update employee
+        set name=#{name},
+            salary=#{salary},
+            birthday=#{birthday},
+            photo=#{photo}
+        where id = #{id}
+    </update>
+
+    <!--删除员工-->
+    <delete id="delete" parameterType="Integer">
+        delete
+        from employee where id=#{id}
+    </delete>
+
+    <!--查询所有员工-->
+    <select id="lists" resultType="com.xx.emsthymeleaf.pojo.Employee">
+        select *
+        from employee
+    </select>
+
+    <!--通过id查询-->
+    <select id="findById" parameterType="Integer" resultType="com.xx.emsthymeleaf.pojo.Employee">
+        select *
+        from employee
+        where id = #{id}
+    </select>
+</mapper>

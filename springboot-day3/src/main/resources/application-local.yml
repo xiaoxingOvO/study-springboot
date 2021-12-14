@@ -1,0 +1,7 @@
+# 指定文件上传位置
+file:
+  upload:
+    dir: D:\workspace_idea\springboot\springboot-day3\upload #指定本地测试上传目录
+  download:
+    dir: D:\workspace_idea\springboot\springboot-day3\download  #指定下载目录测试环境
+    #dir: /home/download  生产环境
