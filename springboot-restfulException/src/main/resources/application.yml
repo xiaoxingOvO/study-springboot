@@ -1,0 +1,30 @@
+mysql:
+  host: ENC(qExbV8bdC2GLS6/SByV94meXFdaIGFPQ)
+
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ems-jsp?characterEncoding=utf8&serverTimezone=GMT
+    username: root
+    password: root
+#    url: jdbc:mysql://${mysql.host}:3306/ems-jsp?chatacterEncoding=UTF-8
+#    username: ENC(cv2W1fM0vSNpx4R12MsY2Q==)
+#    password: ENC(cv2W1fM0vSNpx4R12MsY2Q==)
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.xx.entity
+
+
+    #jasypt:
+  #  encryptor:
+  #    algorithm: PBEWithMD5AndDES           #\u6307\u5B9A\u52A0\u5BC6\u7B97\u6CD5
+  #password:  aaaxxx@23232sdsfds         #\u6307\u5B9A\u79D8\u94A5 -Djasypt.encryptor.password=aaaxxx@23232sdsfds  nohuo java -jar -Djasypt.encryptor.password=aaaxxx@23232sdsfds  xxx.jar
+
