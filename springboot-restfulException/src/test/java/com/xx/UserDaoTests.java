@@ -1,6 +1,6 @@
 package com.xx;
 
-import com.baizhi.dao.UserDao;
+import com.xx.dao.UserDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
