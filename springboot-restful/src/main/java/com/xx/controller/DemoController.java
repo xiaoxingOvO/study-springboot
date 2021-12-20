@@ -24,7 +24,7 @@ public class DemoController {
     //查询一个      传统wbe开发: 不是restful风格  就是用 @RequestMapping映射请求路径:  支持任何一个请求请求这个路径
     @RequestMapping("findUserById")     //GET POST DELETE PUT PATCH
     public String findUserById(Integer id) {
-        log.debug("查询用户id为:{}", id);
+        log.debug("查询的用户id为:{}", id);
         User user = new User(1, "小红", 2345.34, new Date());
         //存储作用域
         // model.addAttribute(user);

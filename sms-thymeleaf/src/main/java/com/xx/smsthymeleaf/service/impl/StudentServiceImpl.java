@@ -26,6 +26,7 @@ public class StudentServiceImpl implements StudentService {
 
     /**
      * 注册
+     *
      * @param
      * @return
      */
@@ -34,7 +35,7 @@ public class StudentServiceImpl implements StudentService {
         //查询该学号是否存在
         Student stuNum = studentMapper.selectByNum(stu.getStuNum());
         //判断是否存在，如果已存在，就抛出异常
-        if(!ObjectUtils.isEmpty(stuNum)) throw new RuntimeException("该学号已有学生注册！");
+        if (!ObjectUtils.isEmpty(stuNum)) throw new RuntimeException("该学号已有学生注册！");
         //如果不在，则可以注册
         studentMapper.insert(stu);
     }
@@ -46,7 +47,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     /**
-     * 员工列表
+     * 学生列表
+     *
      * @return
      */
     @Override

@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         //1.根据用户名查询用户名
         User user = userMapper.findByUserName(username);
         if (ObjectUtils.isEmpty(user)) throw new RuntimeException("用户名错误或用户不存在!");
-        //2.比较密码
+        //2.比较密码,注意先加密再比较
         String ps = DigestUtils.md5DigestAsHex(password.getBytes(StandardCharsets.UTF_8));
         if (!user.getPassword().equals(ps)) throw new RuntimeException("密码错误!");
         return user;

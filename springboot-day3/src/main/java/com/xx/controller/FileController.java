@@ -37,7 +37,7 @@ public class FileController {
      */
     @RequestMapping("download")
     public void download(String fileName, HttpServletResponse response) throws IOException {
-        log.debug("当前下载文件名为: {}", fileName);
+        log.debug("当前下载文件名是: {}", fileName);
         log.debug("当前下载文件目录: {}", realPath1);
         //1.去指定目录中读取文件
         File file = new File(realPath1, fileName);

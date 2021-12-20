@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.ObjectUtils;
 
-import javax.servlet.http.HttpSession;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -32,7 +31,8 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 注册
+     * 用户注册
+     *
      * @param user
      */
     @Override
@@ -44,12 +44,13 @@ public class UserServiceImpl implements UserService {
         //进行密码加密
         String newPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes(StandardCharsets.UTF_8));
         user.setPassword(newPassword);
-        log.debug("加密后的密码:{}",newPassword);
+        log.debug("加密后的密码:{}", newPassword);
         userMapper.register(user);
     }
 
     /**
      * 用户登录
+     *
      * @param user
      */
     @Override
@@ -59,7 +60,7 @@ public class UserServiceImpl implements UserService {
         if (ObjectUtils.isEmpty(userDB)) throw new RuntimeException("用户名输入错误!");
         //2.判断密码是否正常,先加密再比较
         String newPassword = DigestUtils.md5DigestAsHex(user.getPassword().getBytes(StandardCharsets.UTF_8));
-        if(!userDB.getPassword().equals(newPassword)) throw new RuntimeException("密码错误!");
+        if (!userDB.getPassword().equals(newPassword)) throw new RuntimeException("密码错误!");
         return userDB;
     }
 }

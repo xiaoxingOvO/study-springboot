@@ -15,7 +15,7 @@ public class GlobalExceptionResolver {
     @ExceptionHandler(value = IllegalNumberException.class)
     @ResponseBody
     public ResponseEntity<String> illegalNumberExceptionHandler(Exception ex) {
-        System.out.println("进入非法参数异常处理");
+        System.out.println("进入非法参数异常处理-------");
         return new ResponseEntity<String>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -23,7 +23,7 @@ public class GlobalExceptionResolver {
     @ExceptionHandler(value = Exception.class) //用在方法上  作用:用来处理指定异常  value属性: 用来指定处理异常类型
     @ResponseBody
     public ResponseEntity<String> exceptionHandler(Exception ex) {
-        System.out.println("进入自定义异常处理");
+        System.out.println("进入自定义异常处理-------");
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

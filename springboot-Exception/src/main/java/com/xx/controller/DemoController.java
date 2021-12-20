@@ -12,7 +12,7 @@ public class DemoController {
     @RequestMapping("demo")
     public String demo() {
         System.out.println("demo ok ...");
-        int n = 1 / 0;//报错: 除零异常
+        int n = 1 / 0;  //会报错: 除零异常
         return "hello";
     }
 

@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        log.debug("日志测试--------------------");
+        log.debug("日志测试----------------");
         return userMapper.findAll();
     }
 }
